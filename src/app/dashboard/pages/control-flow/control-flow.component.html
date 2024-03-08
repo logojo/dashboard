@@ -1,0 +1,50 @@
+<section class="grid grid-cols-1 md:grid-cols-2 gap-2">
+
+    <div class="bg-white rounded shadow p-10">
+        <h1 class="text-2xl font-bold mb-2">Estructuras de control</h1>
+        <h2 class="text-1xl font-bold mb-5">if: {{ showContent() }}</h2>
+
+        <button 
+          class="p-2 bg-blue-500 text-white"
+         (click)="toggleContent()"
+        >
+            Click me!!
+        </button>
+
+        @if ( showContent() ) {
+            <p>show me!!!</p>
+        } @else {
+            <p>*****</p>
+        }
+    </div>
+
+
+    <div class="bg-white rounded shadow p-10">
+        <p>grade: {{ grade()}}</p>
+        @switch ( grade() ) {
+            @case ('A') {
+                <p>Arriba de 90</p>
+            }
+            @case ('B') {
+                <p>Arriba de 80</p>
+            }
+            @default {
+                <p>Reprobado</p>
+            }
+        }
+
+        <button 
+            class="p-2 bg-blue-500 text-white"
+            (click)="changeGrade()"
+        >
+            Change me!!
+        </button>
+    </div>
+
+    
+
+
+
+
+</section>
+
