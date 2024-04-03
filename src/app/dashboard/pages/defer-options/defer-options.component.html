@@ -1,1 +1,62 @@
-<p>defer-options works!</p>
+<app-title title="Defer Triggers"/>
+
+<section>
+    <hr class="my-2">
+
+    
+
+    @defer(on interaction){
+        <app-heavy-loader-fast cssClass="bg-blue-400 h-20 mb-3">
+            <span class="p-3">On interaction</span>
+        </app-heavy-loader-fast>
+    } @placeholder {
+        <div class="w-full h-20 mb-3 bg-purple-100">click en el div</div>
+    }
+
+    <button
+      #btnInteraction 
+      class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-2">click me</button>
+
+    @defer(on interaction( btnInteraction)){
+        <app-heavy-loader-fast cssClass="bg-blue-400 h-20 mb-3">
+            <span class="p-3">On interaction con botón</span>
+        </app-heavy-loader-fast>
+    } @placeholder {
+        <div class="w-full h-20 mb-3 bg-purple-100">click en el boton</div>
+    }
+
+    <!-- @defer(on hover( btnInteraction )){ se puede usar con ekl boton -->
+    @defer(on hover){
+        <app-heavy-loader-fast cssClass="bg-yellownp-400 h-20 mb-3">
+            <span class="p-3">On hover</span>
+        </app-heavy-loader-fast>
+    } @placeholder {
+        <div class="w-full h-20 mb-3 bg-purple-100">pasa el mouse</div>
+    }
+
+    @defer(on immediate){
+        <app-heavy-loader-fast cssClass="bg-cyan-100 h-20 mb-3">
+            <span class="p-3">On immediate</span>
+        </app-heavy-loader-fast>
+    } @placeholder {
+        <div class="w-full h-20 mb-3 bg-purple-100">immediate</div>
+    }
+
+    @defer(on timer( 2000 )){
+        <app-heavy-loader-fast cssClass="bg-green-400 h-20 mb-3">
+            <span class="p-3">On timer</span>
+        </app-heavy-loader-fast>
+    } @placeholder {
+        <div class="w-full h-20 mb-3 bg-purple-100">carga en 2 segundos</div>
+    }
+
+    <!-- se pueden convinar los tipos de carga diferida, lo empezara a cargar en cuanto el navegador entre en reposo(idle)
+    y lo mostrara al pasar el raton -->
+    @defer(on hover; prefetch on idle){
+        <app-heavy-loader-fast cssClass="bg-red-400 h-20 mb-3" >
+            <span class="p-3">On hover idle</span>
+        </app-heavy-loader-fast>
+    } @placeholder {
+        <div class="w-full h-20 mb-3 bg-purple-100">hover</div>
+    }
+</section>
